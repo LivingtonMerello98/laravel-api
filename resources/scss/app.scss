@@ -1,0 +1,20 @@
+@import "~bootstrap/scss/bootstrap";
+@import './partials/variables.scss';
+
+//sections
+@import url("./components/header.scss");
+@import url("./components/hero.scss");
+@import url("./components/about.scss");
+@import url("./components/content.scss");
+@import url("./components/form.scss");
+@import url("./components/footer.scss");
+
+
+
+section:nth-child(odd) {
+    background: $primary;
+}
+
+section:nth-child(even) {
+    background: $secondary;
+}

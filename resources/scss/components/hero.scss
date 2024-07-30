@@ -1,0 +1,28 @@
+@import '../partials/variables.scss';
+
+
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    background-image: url('https://img.freepik.com/free-photo/abstract-wavy-background_23-2150534042.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .label {
+        background-color: $tertiary;
+        border-radius: 0.3rem;
+    }
+
+    .img-container {
+        width: 55%;
+        height: auto;
+        box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.292);
+        border-radius: 100%;
+
+        .img {
+            width: 100%;
+            border-radius: 100%
+        }
+    }
+}

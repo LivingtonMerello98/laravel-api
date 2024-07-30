@@ -1,0 +1,30 @@
+@import '../partials/variables.scss';
+
+.about {
+
+    .cart {
+        background-color: $secondary;
+        border-radius: 0.3rem;
+    }
+
+    .language {
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .percentage {
+        font-size: 14px;
+    }
+
+    .img-container-sm {
+        width: 15%;
+        height: auto;
+        // box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.292);
+        border-radius: 100%;
+
+        .img {
+            width: 100%;
+            border-radius: 100%
+        }
+    }
+}
