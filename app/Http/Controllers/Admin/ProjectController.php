@@ -20,7 +20,7 @@ class ProjectController extends Controller
         $counter = 1;
         //da all() a latest per poter usare il paginator
         //consultare Providers/AppServiceProvider
-        $projects = Project::latest()->paginate(5);
+        $projects = Project::latest()->paginate(4);
 
 
         return view('admin.projects.index', compact('projects', 'counter'));

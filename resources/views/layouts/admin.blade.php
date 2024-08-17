@@ -8,35 +8,37 @@
     <title></title>
 </head>
 <body>
-    <!-- header per tablet e smartphone -->
-    <div class="col-12 bg-dark d-block d-md-none ">
-        <!-- nav-bar -->
-        <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="#">Bootstrap Dashboard</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">>Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/admin/projects') }}">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('admin/projects/create') }}">Create</a>
-                    </li>
-                </ul>
-            </div>
-          </div>
-      </nav>
-    </div>
+
+
+        <!-- header per tablet e smartphone -->
+        <div class="col-12 bg-dark d-block d-md-none ">
+            <!-- nav-bar -->
+            <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+              <div class="container-fluid">
+                  <a class="navbar-brand" href="#">Bootstrap Dashboard</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/admin/projects') }}">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('admin/projects/create') }}">Create</a>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+          </nav>
+        </div>
 
     <main class="d-flex overflow-hidden bg-dark">
         <!-- side-bar -->
-        <div class=" col-md-3 col-lg-3 d-flex flex-column flex-shrink-0 p-3 text-white d-none d-md-block bg-dark bg-gradient min-vh-100">
+        <div class="sidebar col-md-3 col-lg-3 d-flex flex-column flex-shrink-0 p-3 text-white d-none d-md-block bg-dark bg-gradient min-vh-100">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
               <span class="fs-4">Admin Area</span>
           </a>
@@ -138,7 +140,7 @@
       </div>
 
           <!-- content -->
-        <div class="col-1 m-3 p-2 mx-4 mt-4 flex-grow-1">
+        <div class=" content col-1 m-3 p-2 mx-4 mt-4 flex-grow-1">
 
         @yield('content')
 
