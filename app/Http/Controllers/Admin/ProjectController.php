@@ -22,7 +22,6 @@ class ProjectController extends Controller
         //consultare Providers/AppServiceProvider
         $projects = Project::latest()->paginate(4);
 
-
         return view('admin.projects.index', compact('projects', 'counter'));
     }
 

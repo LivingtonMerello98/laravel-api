@@ -2,6 +2,8 @@ Task
 
 Backoffice layout
 
-[] Button index.project
-[] windows adjustment index.project
+[x] Button index.project
+[x] windows adjustment index.project
+[x] Layout index.project
+[x] Modal Index.Project
 
