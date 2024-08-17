@@ -7,7 +7,10 @@
 <div class="container mb-3">
     <div class="row">
         <div class="col-md-6">
-            <h3 class="fw-medium text-light mb-3">Projects</h3> 
+            <div class="d-flex align-items-center mb-3">
+                <i class="fa-solid fa-diagram-project" style="color: #ffffff;"></i>
+                <span class="fw-medium fs-3 text-light d-none d-md-inline-block mx-3">Projects</span> 
+            </div>
             <div class="col-md-10">
                 <p class="fw-light text-light">
                     Welcome to the Projects Area. Here, you can easily manage all your projects.
@@ -25,7 +28,7 @@
     </div>
 </div>
 
-<div class="card bg-dark text-light border-0 py-2  shadow p-3 mb-5 rounded">
+<div class="card bg-dark text-light border-0 py-1  shadow p-3 mb-5 rounded">
     {{-- header --}}
     <div class="card-header bg-secondary bg-gradient border-0">
       <ul class="nav nav-tabs card-header-tabs">
