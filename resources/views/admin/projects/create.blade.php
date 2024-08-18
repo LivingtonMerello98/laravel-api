@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    <div class="card bg-dark text-light border-0 py-2  shadow p-3 mb-5 rounded">
+    <div class="card bg-dark text-light border-0 py-2  shadow mb-5 rounded">
         <div class="card-header bg-secondary border-0">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
@@ -78,7 +78,7 @@
                             </div>
                 
                             <div class="form-group mb-3 d-flex justify-content-between flex-wrap">
-                                <label for="categories" class="text-light fw-light mb-2">Technologies:</label>
+                                <label for="technology_id[]" class="text-light fw-light mb-2">Technologies:</label>
                                 @foreach ($technologies as $technology)
                                     <div class="form-check">
                                         <input class="form-check-input bg-dark text-light border-secondary" type="checkbox" value="{{ $technology->id }}" id="flexCheckDefault{{$technology->id}}" name="technology_id[]">
@@ -104,7 +104,10 @@
                         </div>
                         
                         <div class="col-md-12 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-primary mt-3 col-md-10">Create</button>
+                            <button type="submit" class="btn btn-primary mt-3 col-md-10">
+                                <i class="fa-solid fa-file me-1" style="color: #ffffff;"></i>
+                                Create
+                            </button>
                         </div>
                     </div>
                 </form>

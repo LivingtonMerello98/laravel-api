@@ -70,6 +70,7 @@ class ProjectController extends Controller
     //dettaglio 
     public function show($id)
     {
+        $projects = Project::all();
         //recupera l'id del progetto con la
         $project = Project::with('category')->find($id);
 
@@ -77,7 +78,7 @@ class ProjectController extends Controller
             return redirect()->route('admin.projects.index')->with('error', 'Progetto non trovato.');
         }
 
-        return view('admin.projects.show', compact('project'));
+        return view('admin.projects.show', compact('project', 'projects'));
     }
 
 

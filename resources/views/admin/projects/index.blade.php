@@ -3,7 +3,6 @@
 
 {{-- projects index --}}
 @section('content')
-
 <div class="container mb-3">
     <div class="row">
         <div class="col-md-6">
@@ -24,84 +23,90 @@
                 </div>
             </a>
         </div>
-        
     </div>
 </div>
 
-<div class="card bg-dark text-light border-0 py-1  shadow p-3 mb-5 rounded">
-    {{-- header --}}
-    <div class="card-header bg-secondary bg-gradient border-0">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active bg-dark text-light fw-normal border-0" aria-current="true" href="{{ url('/admin/projects') }}">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light fw-light border-0" href="{{ url('admin/projects/create') }}">Create New Project</a>
-        </li>
-      </ul>
-    </div>
-
-    <div>
-        <div class="container-fluid py-3">
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
+<div class="container">
+    <div class="card bg-dark text-light border-0 py-1 col-md-12  shadow mb-5 rounded">
+        {{-- header --}}
+        <div class="card-header bg-secondary bg-gradient border-0">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link active bg-dark text-light fw-normal border-0" aria-current="true" href="{{ url('/admin/projects') }}">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light fw-light border-0" href="{{ url('admin/projects/create') }}">Create New Project</a>
+            </li>
+          </ul>
+        </div>
+    
+        <div>
+            <div class="container-fluid py-3">
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+            
+                <div class="container">
+                    <table class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                {{-- <th class="text-uppercase">#</th> --}}
+                                <th class="text-uppercase fw-light">cover</th>
+                                <th class="text-uppercase fw-light">Name</th>
+                                <th class="text-uppercase fw-light text-center">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($projects as $project)
+                                <tr>
+                                    {{-- <td>
+                                        {{ $counter++}}
+                                    </td> --}}
+                                    <td>
+                                        <div>
+                                            @if ($project->cover)
+                                                <img src="{{asset('storage/'. $project->cover)}}" alt="" class="w-100" style="max-width: 50px; min-width: 50px;">
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <p class="text-white fw-normal text-capitalize">{{ $project->title }}</p>
+                                        </div>
+                                    </td>
+                                    {{-- cta --}}
+                                    <td class="text-center">
+                                        {{-- show --}}
+                                        <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-info btn-sm rounded-1">
+                                            <i class="fa-regular fa-eye" style="color: #ffffff;"></i>
+                                        </a>
+                                        {{-- settings --}}
+                                        <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning btn-sm rounded-1">
+                                            <i class="fa-solid fa-gear" style="color: #ffffff;"></i>
+                                        </a>
+                                        {{-- modal for delete --}}
+                                        <button type="submit" class="btn btn-danger btn-sm rounded-1" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal{{ $project->id }}">
+                                            <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                        </button>
+                                    </td>       
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- paginatore --}}
+                    <div class="col-md-12 d-flex justify-content-end">
+                        {{$projects->links('vendor.pagination.bootstrap-5')}}
+                    </div>
                 </div>
-            @endif
-        
-            @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
-        
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        {{-- <th class="text-uppercase">#</th> --}}
-                        <th class="text-uppercase fw-light">cover</th>
-                        <th class="text-uppercase fw-light">NAme</th>
-                        <th class="text-uppercase fw-light text-center">Options</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($projects as $project)
-                        <tr>
-                            {{-- <td>
-                                {{ $counter++}}
-                            </td> --}}
-                            <td>
-                                <div>
-                                    @if ($project->cover)
-                                        <img src="{{asset('storage/'. $project->cover)}}" alt="" class="w-100" style="max-width: 50px; min-width: 50px;">
-                                    @endif
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <p class="text-white fw-normal text-capitalize">{{ $project->title }}</p>
-                                </div>
-                            </td>
-                            {{-- cta --}}
-                            <td class="text-center">
-                                <a href="{{ route('admin.projects.show', $project->id) }}" class="btn btn-info btn-sm rounded-1">
-                                    <i class="fa-regular fa-eye" style="color: #ffffff;"></i>
-                                </a>
-                                <a href="{{ route('admin.projects.edit', $project->id) }}" class="btn btn-warning btn-sm rounded-1">
-                                    <i class="fa-solid fa-pencil" style="color: #ffffff;"></i>
-                                </a>
-                                <button type="submit" class="btn btn-danger btn-sm rounded-1" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{ $project->id }}">
-                                    <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-                                </button>
-                            </td>       
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            {{-- paginatore --}}
-            <div class="col-md-12 d-flex justify-content-end">
-                {{$projects->links('vendor.pagination.bootstrap-5')}}
             </div>
         </div>
     </div>
