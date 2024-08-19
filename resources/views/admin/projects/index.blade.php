@@ -80,6 +80,9 @@
                                     <td>
                                         <div>
                                             <p class="text-white fw-normal text-capitalize">{{ $project->title }}</p>
+                                            {{-- <div>
+                                                <span class="badge text-bg-success ms-2">{{ $project->category ? $project->category->title : 'Categoria non definita' }}</span>
+                                            </div> --}}
                                         </div>
                                     </td>
                                     {{-- cta --}}

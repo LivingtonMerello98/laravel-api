@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- per caricare il css prima di visualizzare la pagina --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     @vite(['resources/js/app.js'])
     <title></title>
@@ -36,7 +38,7 @@
           </nav>
         </div>
 
-    <main class="d-flex overflow-hidden bg-dark">
+    <main class="d-flex overflow-hidden bg-dark" style="height:100vh">
         <!-- side-bar -->
         <div class="sidebar col-md-3 col-lg-3 d-flex flex-column flex-shrink-0 p-3 text-white d-none d-md-block bg-dark bg-gradient min-vh-100">
           <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -134,10 +136,16 @@
       </div>
 
           <!-- content -->
-        <div class=" content col-1 m-3 p-2 mx-4 mt-4 flex-grow-1">
+          {{-- modifiche per rendere la sezione content scrollabile in autonomia --}}
+          <div class="content col-1 m-3 p-2 mx-4 mt-4 flex-grow-1" style="overflow-y: scroll; max-height: 100vh; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;">
 
-        @yield('content')
-
+            <style>
+                .content::-webkit-scrollbar {
+                    display: none; 
+                }
+            </style>
+        
+            @yield('content')
         </div>
     </main>
 </body>

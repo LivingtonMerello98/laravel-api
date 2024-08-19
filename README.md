@@ -9,3 +9,9 @@ Backoffice layout
 
 [x] layout edit project
 [x] layout show project 
+
+19/08/24
+
+[] definire il layout di index category
+[]definire il layout edit category
+[]definire il layout remove (modal) category
