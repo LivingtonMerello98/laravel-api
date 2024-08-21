@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="col-md-6 text-end">
-                                <span class="badge text-bg-primary mb-3">{{ $project->category ? $project->category->title : 'Categoria non definita' }}</span>
+                                <span class="badge text-bg-warning mb-3">{{ $project->category ? $project->category->title : 'Categoria non definita' }}</span>
                             </div>
                         </div>
                         <hr class="tex-light mb-3">

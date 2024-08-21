@@ -12,31 +12,31 @@
 <body>
 
 
-        <!-- header per tablet e smartphone -->
-        <div class="col-12 bg-dark d-block d-md-none ">
-            <!-- nav-bar -->
-            <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
-              <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Bootstrap Dashboard</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">>Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/admin/projects') }}">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('admin/projects/create') }}">Create</a>
-                        </li>
-                    </ul>
-                </div>
-              </div>
-          </nav>
-        </div>
+    <!-- header per tablet e smartphone -->
+    <div class="col-12 bg-dark d-block d-md-none ">
+        <!-- nav-bar -->
+        <nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Bootstrap Dashboard</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/') }}">>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/admin/projects') }}">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('admin/projects/create') }}">Create</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </nav>
+    </div>
 
     <main class="d-flex overflow-hidden bg-dark" style="height:100vh">
         <!-- side-bar -->

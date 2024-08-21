@@ -120,7 +120,7 @@
     <div class="modal fade" id="deleteModal{{ $project->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $project->id }}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-dark text-light">
-                <div class="modal-header border-bottom-0">
+                <div class="modal-header border-bottom-0 text-bg-danger">
                     <h5 class="modal-title" id="deleteModalLabel{{ $project->id }}">Delete Confirmation</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

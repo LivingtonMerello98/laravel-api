@@ -22,11 +22,11 @@ class CategoryController extends Controller
     public function index()
     {
         //counter per la list
-        $counter = 1;
+        // $counter = 1;
 
         $categories = Category::latest()->paginate(5);
         $projects = Project::all();
-        return view('admin.categories.index', compact('categories', 'counter', 'projects'));
+        return view('admin.categories.index', compact('categories', 'projects'));
     }
 
     /**
