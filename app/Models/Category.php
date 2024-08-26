@@ -11,7 +11,9 @@ class Category extends Model
     //funzione per avere pù Project all'interno delle categories
 
     protected $fillable = [
-        'title', 'slug'
+        'title',
+        'slug',
+        'description'
     ];
 
 

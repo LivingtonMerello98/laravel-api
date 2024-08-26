@@ -15,10 +15,10 @@ Backoffice layout
 -category
 
 [x] definire il layout di index category
-[]definire il layout edit category
-[]definire il layout remove (modal) category
+[x]definire il layout edit category
+[x]definire il layout remove (modal) category
 
 
-[] realizzare una migration per la descrizione delle categories
-[] rendere la descrizione fillable nel model
-[] configurare l upadte e l edit nel CategoryController 
+[x] realizzare una migration per la descrizione delle categories
+[x] rendere la descrizione fillable nel model
+[x] configurare l upadte e l edit nel CategoryController 

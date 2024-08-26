@@ -85,6 +85,8 @@
                                             </div> --}}
                                         </div>
                                     </td>
+
+                                    
                                     {{-- cta --}}
                                     <td class="text-center">
                                         {{-- show --}}
@@ -100,7 +102,10 @@
                                         data-bs-target="#deleteModal{{ $project->id }}">
                                             <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
                                         </button>
-                                    </td>       
+                                    </td>
+                                    
+                                    
+
                                 </tr>
                             @endforeach
                         </tbody>
@@ -144,30 +149,34 @@
 @endforeach
 
 
-
 <div class="container">
-    <div class="row justify-content-between">
-        <div class="col-md-12 mb-3">
-            <h3 class="fw-medium text-light mb-3">Explore Categories</h3> 
-            <div class="col-md-10">
-                <p class="fw-light text-light">
-                   Here you can find all project's categories.
-                </p>
+    @if ($categories && count($categories) > 0)
+        <div class="row justify-content-between">
+            <div class="col-md-12 mb-3">
+                <h3 class="fw-medium text-light mb-3">Explore Categories</h3> 
+                <div class="col-md-10">
+                    <p class="fw-light text-light">
+                    Here you can find all project's categories.
+                    </p>
+                </div>
             </div>
-        </div>
 
-        @foreach ( $projects as $project )
-        <div class="card bg-dark border-0 shadow p-3 mb-5 rounded text-light col-md-3 ">
-            <img src="https://i0.wp.com/plopdo.com/wp-content/uploads/2021/07/Screenshot-1.png?resize=1210%2C642&ssl=1" alt="">
-          <div class="card-body">
-            <h4 class="fw-normal">{{$project->category->title}}</h4>
-            <p class="card-text fw-light">{{$project->category->updated_at}}</p>
-            <a href="#" class="btn bg-primary bg-gradient text-light">Go somewhere</a>
-          </div>
-        </div>
-        @endforeach
+            @foreach ( $categories as $category )
+                <div class="card bg-dark border-0 shadow p-3 mb-5 rounded text-light col-md-3 ">
+                        <img src="https://i0.wp.com/plopdo.com/wp-content/uploads/2021/07/Screenshot-1.png?resize=1210%2C642&ssl=1" alt="">
+                    <div class="card-body">
 
-    </div>
+                        <h4 class="fw-normal">{{ $category->title }}</h4>
+                        <p class="card-text fw-light">{{ $category->created_at }}</p>
+                        <a href="#" class="btn bg-primary bg-gradient text-light">Go Somewhere</a>
+                    </div>
+                </div>
+            @endforeach 
+
+        </div>
+    @else
+        <p class="text-light fw-light fst-italic"> non ci sono categorie</p>
+    @endif
 </div>
 
 @endsection

@@ -50,9 +50,10 @@ class TechnologyController extends Controller
      */
     public function show($id)
     {
+        $technologies = Technology::all();
         $technology = Technology::with('projects')->find($id);
 
-        return view('admin.technologies.show', compact('technology'));
+        return view('admin.technologies.show', compact('technology', 'technologies'));
     }
 
     /**

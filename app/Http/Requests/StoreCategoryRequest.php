@@ -23,6 +23,7 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:categories|string|max:30',
+            'description' => 'nullable|string|max:255',
         ];
     }
 }

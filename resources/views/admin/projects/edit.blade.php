@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+
+{{-- edit projects --}}
 @section('content')
 <div class="container mb-3">
     <div class="row">
@@ -36,14 +38,9 @@
                     </div>
                 </div>   
                 <div class="col-md-6 d-flex justify-content-end">
-                    
-                    <div>
-                        
-                    </div>
                 </div>
             </div>
         </div>
-        
         <div class="card bg-dark text-light border-0 shadow mb-5 rounded">
             {{-- header --}}
             {{-- <div class="card-header bg-secondary bg-gradient border-0">
@@ -87,7 +84,6 @@
                                 <label for="cover" class="form-label text-light fw-light mb-2">Cover image</label>
                                 <input class="form-control bg-dark text-light border-secondary" type="file" id="cover" name="cover">
                             </div>
-                    
                     </div>
     
                     <div class="col-md-6 d-flex justify-content-center align-items-center">
@@ -103,35 +99,42 @@
                         </div>
                 
                         <div class="form-group mb-3">
-                            <label for="categories" class="text-light fw-light mb-2">Type:</label>
-                            <select class="form-select bg-dark text-light border-secondary" aria-label="Default select example" name="category_id">
-                                <option value="" disabled>Seleziona categoria</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}" {{ old('category_id', $project->category_id) == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
-                                @endforeach
-                            </select>
+                            @if ($categories->isNotEmpty())
+                                <label for="categories" class="text-light fw-light mb-2">Categories:</label>
+                                <select class="form-select bg-dark text-light border-secondary" aria-label="Default select example" name="category_id">
+                                    <option value="" class="fw-light text-sceondary">Select Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ old('category_id', $project->category_id) == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                    @endforeach
+                                </select>
+                            @else
+                                <p class="text-danger fw-light text-decoration-underline">There are not Category yet.</p>
+                            @endif
+
                         </div>
                 
                         <div class="form-group mb-3 d-flex justify-content-between flex-wrap">
-                            <label for="technology_id[]" class="text-light fw-light mb-2">Technologies:</label>
-                            @foreach ($technologies as $technology)
-                                <div class="form-check">
-                                    <input class="form-check-input bg-dark text-light border-secondary" type="checkbox" value="{{ $technology->id }}" id="flexCheckDefault{{ $technology->id }}" name="technology_id[]" 
-                                    {{ in_array($technology->id, old('technology_id', $project->technologies->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                    <label class="form-check-label text-white" for="flexCheckDefault{{ $technology->id }}">
-                                        {{ $technology->name }}
-                                    </label>
-                                </div>
-                            @endforeach
+                            @if ($technologies-> isNotEmpty())
+                                <label for="technology_id[]" class="text-light fw-light mb-2">Technologies:</label>
+                                @foreach ($technologies as $technology) 
+                                    <div class="form-check">
+                                        <input class="form-check-input bg-dark text-light border-secondary" type="checkbox" value="{{ $technology->id }}" id="flexCheckDefault{{ $technology->id }}" name="technology_id[]" 
+                                        {{ in_array($technology->id, old('technology_id', $project->technologies->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                        <label class="form-check-label text-white" for="flexCheckDefault{{ $technology->id }}">
+                                            {{ $technology->name }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            @else
+                                <p class="text-danger fw-light text-decoration-underline">There are not Technologies yet.</p>
+                            @endif
                         </div>
-    
-                        <div class="col-md-12 d-flex justify-content-center py-4">
-                            <button type="submit" class="btn text-dark bg-warning col-md-10">
-                                <i class="fa-solid fa-cloud-arrow-up"></i>
-                                Update
-                            </button>
-                        </div>
-    
+                            <div class="col-md-12 d-flex justify-content-center py-4">
+                                <button type="submit" class="btn text-dark bg-warning col-md-10">
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                    Update
+                                </button>
+                            </div>
                         </form> 
                     </div>
                 </div>

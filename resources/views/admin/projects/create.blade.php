@@ -67,26 +67,35 @@
                                 <label for="title" class="text-light fw-light mb-2">Title</label>
                                 <input type="text" name="title" id="title" class="form-control bg-dark text-light border-secondary" placeholder="nome del sito" value="{{ old('title') }}">
                             </div>
+
                             <div class="form-group mb-3">
-                                <label for="categories" class="text-light fw-light mb-2">Type:</label>
-                                <select class="form-select bg-dark text-light border-secondary" aria-label="Default select example" name="category_id">
-                                    <option value="" disabled>seleziona categoria</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
-                                    @endforeach
-                                </select>
+                                @if ($categories && count($categories)>0)
+                                    <label for="categories" class="text-light fw-light mb-2">Category:</label>
+                                    <select class="form-select bg-dark text-light border-secondary" aria-label="Default select example" name="category_id">
+                                        <option value="" disabled>seleziona categoria</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <p class="text-danger text-decoration-underline fw-light">There are no Category yet</p>
+                                @endif
                             </div>
                 
                             <div class="form-group mb-3 d-flex justify-content-between flex-wrap">
-                                <label for="technology_id[]" class="text-light fw-light mb-2">Technologies:</label>
-                                @foreach ($technologies as $technology)
-                                    <div class="form-check">
-                                        <input class="form-check-input bg-dark text-light border-secondary" type="checkbox" value="{{ $technology->id }}" id="flexCheckDefault{{$technology->id}}" name="technology_id[]">
-                                        <label class="form-check-label text-light fw-light mb-2" for="flexCheckDefault{{$technology->id}}">
-                                            {{ $technology->name }}
-                                        </label>
-                                    </div>
-                                @endforeach
+                                @if ($technologies && count($technologies)>0 )
+                                    <label for="technology_id[]" class="text-light fw-light mb-2">Technologies:</label>
+                                    @foreach ($technologies as $technology)
+                                        <div class="form-check">
+                                            <input class="form-check-input bg-dark text-light border-secondary" type="checkbox" value="{{ $technology->id }}" id="flexCheckDefault{{$technology->id}}" name="technology_id[]">
+                                            <label class="form-check-label text-light fw-light mb-2" for="flexCheckDefault{{$technology->id}}">
+                                                {{ $technology->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <p class="text-danger text-decoration-underline fw-light">There are no technologies yet</p>
+                                @endif
                             </div>
                 
                         </div>

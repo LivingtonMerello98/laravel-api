@@ -43,7 +43,6 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //dd($request->all());
         $validated = $request->validated();
         $validated['slug'] = Str::slug($request->title);
 
@@ -58,12 +57,14 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
+
         $category = Category::findOrFail($id);
+        $categories = Category::all();
 
         if (!$category) {
             return redirect()->route('admin.categories.index')->with('error', 'Progetto non trovato.');
         }
-        return view('admin.categories.show', compact('category'));
+        return view('admin.categories.show', compact('category', 'categories'));
     }
 
     /**
@@ -80,6 +81,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, $id)
     {
+        // dd($request->all());
         $validated = $request->validated();
         $validated['slug'] = Str::slug($request->title);
 

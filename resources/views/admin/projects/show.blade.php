@@ -1,5 +1,5 @@
 @extends('layouts.admin') 
-
+{{-- project show --}}
 @section('content')
     
     {{-- column --}}
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="col-md-6 text-end">
-                                <span class="badge text-bg-warning mb-3">{{ $project->category ? $project->category->title : 'Categoria non definita' }}</span>
+                                <span class="badge text-bg-success mb-3">{{ $project->category ? $project->category->title : 'Categoria non definita' }}</span>
                             </div>
                         </div>
                         <hr class="tex-light mb-3">
@@ -80,7 +80,7 @@
                                         <li class="list-group-item bg-dark fw-light text-light border-secondary">{{ $technology->name }}</li>
                                     @endforeach
                                 @else
-                                    <li class="list-group-item text-white bg-dark border-secondary">Nessuna tecnologia utilizzata.</li>
+                                    <li class="list-group-item text-danger fw-light bg-dark border-secondary">No Technologies assigned</li>
                                 @endif
                             </ul>
                         </div>
@@ -97,8 +97,7 @@
                                 <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
                             </button>
                         </div>
-                  </div>
-                  
+                  </div>  
             </div>
         </div>
     </div>

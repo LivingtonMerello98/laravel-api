@@ -62,27 +62,14 @@
               </li>
               <li>
                   <a href="{{ url('/admin/categories') }}" class="nav-link text-white bg-light-hover">
-                    <i class="fa-solid fa-layer-group" style="color: #ffffff;"></i>
+                    <i class="fa-solid fa-layer-group me-2" style="color: #ffffff;"></i>
                       <span class="d-none d-md-inline-block">Categories</span>
                   </a>
               </li>
               <li>
-                  <a href="{{ url('admin/categories/create') }}" class="nav-link text-white bg-light-hover">
-                    <i class="fa-solid fa-list" style="color: #ffffff;"></i>
-                      <span class="d-none d-md-inline-block">Create new category  </span>
-                  </a>
-              </li>
-              <hr class="text-white">
-              <li>
                   <a href="{{ url('admin/technologies') }}" class="nav-link text-white bg-light-hover">
-                    <i class="fa-solid fa-microchip" style="color: #ffffff;"></i>
+                    <i class="fa-solid fa-microchip me-2" style="color: #ffffff;"></i>
                       <span class="d-none d-md-inline-block">Technologies</span>
-                  </a>
-              </li>
-              <li>
-                  <a href="{{ url('admin/technologies/create') }}" class="nav-link text-white bg-light-hover">
-                    <i class="fa-solid fa-microchip" style="color: #ffffff;"></i>
-                      <span class="d-none d-md-inline-block">Create Technology</span>
                   </a>
               </li>
               <hr class="text-white">

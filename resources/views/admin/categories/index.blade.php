@@ -33,7 +33,7 @@
             <div class="card-header bg-secondary bg-gradient border-0">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active bg-dark text-light fw-normal border-0" aria-current="true" href="#">Active</a>
+                        <a class="nav-link active bg-dark text-light fw-normal border-0" aria-current="true" href="#">Categories</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light fw-light border-0 fw-capitalize" href="{{ url('admin/categories/create') }}">Create New Category</a>
@@ -56,30 +56,40 @@
                     @endif
                     
                     <div class="row justify-content-start"  style="overflow-y: scroll; overflow-x:hidden; max-height: 50vh; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;">
-                        @foreach ( $categories as $category )
-                            <div class="card text-white bg-dark mb-3 border-0 shadow" style="width:100%;">
-                                <span class="card-header text-bg-warning fw-medium">{{ $category->title }}</span>
-                                <div class="card-body">
-                                    <p class="card-text fw-light">With supporting text below as a natural lead-in to additional content.</p>
-                                    <hr class="text-white">
-                                    <div class="text-end">
-                                        <a href="{{ route('admin.categories.show', $category->id) }}" class="btn btn-info btn-sm rounded-1">
-                                            <i class="fa-regular fa-eye" style="color: #ffffff;"></i>
-                                        </a>
-                                        {{-- settings --}}
-                                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning btn-sm rounded-1">
-                                            <i class="fa-solid fa-gear" style="color: #ffffff;"></i>
-                                        </a>
+                        @if ($categories && count($categories) > 0)
+                            @foreach ( $categories as $category )
+                                <div class="card text-white bg-dark mb-3 border-0 shadow" style="width:100%;">
+                                    <span class="card-header text-bg-success fw-medium">{{ $category->title}}</span>
+                                    <div class="card-body">
+                                        <p class="card-text fw-light">{{$category->description ?? 'no description have been set'}}</p>
+                                        <hr class="text-white">
+                                        <div class="text-end">
+                                            <a href="{{ route('admin.categories.show', $category->id) }}" class="btn btn-info btn-sm rounded-1">
+                                                <i class="fa-regular fa-eye" style="color: #ffffff;"></i>
+                                            </a>
+                                            {{-- settings --}}
+                                            <a href="{{ route('admin.categories.edit', $category->id) }}" class="btn btn-warning btn-sm rounded-1">
+                                                <i class="fa-solid fa-gear" style="color: #ffffff;"></i>
+                                            </a>
 
-                                        {{-- modal for delete --}}
-                                        <button type="submit" class="btn btn-danger btn-sm rounded-1" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal{{ $category->id }}">
-                                            <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
-                                        </button>
+                                            {{-- modal for delete --}}
+                                            <button type="submit" class="btn btn-danger btn-sm rounded-1" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal{{ $category->id }}">
+                                                <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
+                            @endforeach
+                            @else
+
+                            <div class="container">
+                                <div class="col-md-12">
+                                    <p class="text-light fw-light fst-italic">You haven't created categories yet</p>
+                                </div>
                             </div>
-                        @endforeach
+
+                        @endif
                     </div>
                 </div>
             </div>
