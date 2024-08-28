@@ -15,16 +15,37 @@ use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $counter = 1;
-        //da all() a latest per poter usare il paginator
-        //consultare Providers/AppServiceProvider
         $categories = Category::all();
         $projects = Project::latest()->paginate(4);
 
+        // Controlla se la richiesta è per un'API
+        if ($request->wantsJson()) {
+            $projects = $projects->map(function ($project) {
+                return [
+                    'id' => $project->id,
+                    'category_id' => $project->category_id,
+                    'url' => $project->url,
+                    'cover' => $project->cover_url, // Usa l'accessor per l'URL completo
+                    'title' => $project->title,
+                    'slug' => $project->slug,
+                    'description' => $project->description,
+                    'created_at' => $project->created_at,
+                    'updated_at' => $project->updated_at,
+                ];
+            });
+
+            return response()->json([
+                'results' => $projects
+            ]);
+        }
+
+        // Altrimenti, restituisce la vista amministrativa
         return view('admin.projects.index', compact('projects', 'counter', 'categories'));
     }
+
 
     public function create()
     {

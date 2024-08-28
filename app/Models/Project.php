@@ -7,6 +7,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class Project extends Model
 {
@@ -22,7 +25,6 @@ class Project extends Model
     ];
 
 
-
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -32,8 +34,13 @@ class Project extends Model
     {
         return $this->belongsToMany(Technology::class, 'project_technology');
     }
-}
 
+    // Accessor per ottenere l'URL completo dell'immagine cover
+    public function getCoverUrlAttribute()
+    {
+        return $this->cover ? Storage::url($this->cover) : null;
+    }
+}
 
 
 
