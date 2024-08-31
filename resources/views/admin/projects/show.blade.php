@@ -37,17 +37,14 @@
         <div class="row">
             <div class="col-md-4 d-flex justify-content-center align-items-center">
                 {{-- test --}}
-                @if ($project->cover)   
+                @if ($project->cover)
                     <div style="width: 100%; height:auto;" class="shadow">
-                        <img src="{{asset('storage/'. $project->cover)}}" style="width: 100%;min-width: 50px;border-radius:0.5rem"" alt="{{$project->title}}">
+                        <img src="{{$project->cover}}" style="width: 100%;min-width: 50px;border-radius:0.5rem"" alt="{{$project->title}}">
                     </div>
                 @endif
             </div>
             <div class="col-md-8">
                 <div class="card text-white bg-dark border-0 border-secondary">
-                    {{-- <div class="card-header bg-secondary bg-gradient">
-                      <span class="fw-light">lorem ipsum</span>
-                    </div> --}}
                     <div class="card-body">
                         <div class="title-group d-flex">
 

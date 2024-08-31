@@ -88,7 +88,7 @@
     
                     <div class="col-md-6 d-flex justify-content-center align-items-center">
                         <div style="width: 45%; height:auto;">
-                            <img src="{{ asset('storage/' . $project->cover) }}" style="width: 100%; border-radius:0.5rem" alt="Project Cover Image">
+                            <img src="{{ $project->cover }}" style="width: 100%; border-radius:0.5rem" alt="Project Cover Image">
                         </div>
                     </div>
     

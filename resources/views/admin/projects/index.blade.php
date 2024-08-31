@@ -73,7 +73,8 @@
                                     <td>
                                         <div>
                                             @if ($project->cover)
-                                                <img src="{{asset('storage/'. $project->cover)}}" alt="" class="w-100" style="max-width: 50px; min-width: 50px;">
+                                            
+                                                <img src="{{ $project->cover}}" alt="" class="w-100" style="max-width: 50px; min-width: 50px;">
                                             @endif
                                         </div>
                                     </td>
@@ -103,9 +104,6 @@
                                             <i class="fa-solid fa-trash" style="color: #ffffff;"></i>
                                         </button>
                                     </td>
-                                    
-                                    
-
                                 </tr>
                             @endforeach
                         </tbody>

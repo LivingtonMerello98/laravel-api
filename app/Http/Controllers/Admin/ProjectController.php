@@ -21,30 +21,25 @@ class ProjectController extends Controller
         $categories = Category::all();
         $projects = Project::latest()->paginate(4);
 
-        // Controlla se la richiesta è per un'API
-        if ($request->wantsJson()) {
-            $projects = $projects->map(function ($project) {
-                return [
-                    'id' => $project->id,
-                    'category_id' => $project->category_id,
-                    'url' => $project->url,
-                    'cover' => $project->cover_url, // Usa l'accessor per l'URL completo
-                    'title' => $project->title,
-                    'slug' => $project->slug,
-                    'description' => $project->description,
-                    'created_at' => $project->created_at,
-                    'updated_at' => $project->updated_at,
-                ];
-            });
+        // Prepara i dati JSON
+        $projectsJson = $projects->map(function ($project) {
+            return [
+                'id' => $project->id,
+                'category_id' => $project->category_id,
+                'url' => $project->url,
+                'cover' => $project->cover, // Usa l'accessor per l'URL completo
+                'title' => $project->title,
+                'slug' => $project->slug,
+                'description' => $project->description,
+                'created_at' => $project->created_at,
+                'updated_at' => $project->updated_at,
+            ];
+        });
 
-            return response()->json([
-                'results' => $projects
-            ]);
-        }
-
-        // Altrimenti, restituisce la vista amministrativa
-        return view('admin.projects.index', compact('projects', 'counter', 'categories'));
+        // Passa i dati JSON alla vista
+        return view('admin.projects.index', compact('projects', 'counter', 'categories', 'projectsJson'));
     }
+
 
 
     public function create()
@@ -70,9 +65,14 @@ class ProjectController extends Controller
 
         $validated['slug'] = Str::slug($request->title);
 
-        $img_path = Storage::put('uploads', $validated['cover']);
+        //$img_path = Storage::put('uploads', $validated['cover']);
 
-        $validated['cover'] = $img_path;
+        if ($request->hasFile('cover')) {
+            $img_path = Storage::put('uploads', $request->file('cover'));
+            $validated['cover'] = $img_path;
+        }
+
+        //$validated['cover'] = $img_path;
 
         $project_name = $request->title;
 
@@ -95,6 +95,7 @@ class ProjectController extends Controller
         $projects = Project::all();
         //recupera l'id del progetto con la
         $project = Project::with('category')->find($id);
+
 
         if (!$project) {
             return redirect()->route('admin.projects.index')->with('error', 'Progetto non trovato.');

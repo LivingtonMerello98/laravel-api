@@ -20,4 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //questa rotta fa si che una richiesta http a un ednpoint raggiunga il controller
-Route::get('/projects', [ProjectController::class, 'index']);
+//Route::get('projects', [ProjectController::class, 'index']);
+
+
+//con apiResource passiamo con l'api tutte le risorse tranne edit e create
+Route::apiResource('projects', ProjectController::class)->parameters([
+    'projects' => 'project:slug'
+]);

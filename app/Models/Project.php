@@ -36,21 +36,10 @@ class Project extends Model
     }
 
     // Accessor per ottenere l'URL completo dell'immagine cover
-    public function getCoverUrlAttribute()
+    public function getCoverAttribute($value)
     {
-        return $this->cover ? Storage::url($this->cover) : null;
+        return asset('storage/' . $value);
     }
 }
 
-
-
-
-    // public function getLanguagesArrayAttribute()
-    // {
-    //     return explode(',', $this->languages);
-    // }
-
-    // public function setLanguagesArrayAttribute($value)
-    // {
-    //     $this->attributes['languages'] = implode(',', $value);
-    // }
+// url('/')

@@ -20,4 +20,26 @@ class ProjectController extends Controller
             'results' => $projects,
         ]);
     }
+
+    public function show(string $slug)
+
+    {
+        $projects = Project::where('slug', $slug)->with('category', 'technologies')->first();
+
+        //check se il post viene trovato
+
+        if ($projects) {
+
+            return response()->json([
+                'success' => true,
+                'results' => $projects,
+            ]);
+        } else {
+
+            return response()->json([
+                'success' => false,
+                'results' => null,
+            ], 404);
+        }
+    }
 }
